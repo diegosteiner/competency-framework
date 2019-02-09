@@ -9,8 +9,13 @@
         <xs:complexType>
             <xs:all>
                 <xs:element name="title" type="title" />
+                <xs:element maxOccurs="unbounded" minOccurs="1" name="goal" type="goal">
             </xs:all>
         </xs:complexType>
+        <xs:attribute name="nr" type="xs:unsignedByte" use="required" />
+        <xs:attribute name="lang" type="xs:string" use="required" />
+        <xs:attribute name="fieldofcompetence" type="xs:string" use="required" />
+        <xs:attribute name="level" type="xs:unsignedByte" use="required" />
     </xs:element>
 
     <xs:simpleType name="title">
@@ -19,4 +24,19 @@
             <xs:maxLength value="500" />
         </xs:restriction>
     </xs:simpleType>
+  
+              <xs:element name="title" type="xs:string" />
+              <xs:element maxOccurs="unbounded" name="requiredknowledge">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="nr" type="xs:unsignedByte" use="required" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="nr" type="xs:unsignedByte" use="required" />
+          </xs:complexType>
+        </xs:element>
 </xs:schema>
